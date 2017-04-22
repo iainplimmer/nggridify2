@@ -1,0 +1,28 @@
+{
+  "name": "nggridify2",
+  "version": "0.0.2",
+  "description": "ng-gridify reimagined for Angular2+. Generic grid for angularJS with paging, sorting, the ability to export CSV and configurable content.",
+  "main": "index.js",
+  "scripts": { },
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular4",
+    "grid",
+    "gridify",
+    "nggridify",
+    "paging",
+    "sorting",
+    "display data",
+    "ng-gridify"
+  ],
+  "author": "Iain Plimmer",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iainplimmer/ngGridify2"
+  }
+}
+
+
+
