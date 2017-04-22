@@ -1,5 +1,9 @@
 export class ngGridifyData {
     Title: string;
     Data: any;
-    ItemClick: any;
+    ExportEnabled: boolean;
+    ItemClick: {
+        Function : any;
+        Text: string;
+    }
 }

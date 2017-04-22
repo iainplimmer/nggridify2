@@ -17,10 +17,11 @@ Contributions
 If you want to contribute, i'm attempting to complete the following features and all contributions are welcome, this is a learning project and certainly not a vanity one. (in no particular order).
 
 1.  Pass in a native JSON object and title for the grid.
-2.  Read the JSON object and build a table around it. <--(Done until here)
-3.  Pass in how many items per-page to display.
-4.  Allow the ability to sort the columns by clicking the header.
-5.  Turn on/off a feature to convert the JSON data into a CSV file.
+2.  Read the JSON object and build a table around it. 
+3.  Turn on/off a feature to convert the JSON data into a CSV file. <--(Done until here)
+4.  Pass in how many items per-page to display.
+5.  Allow the ability to sort the columns by clicking the header.
+
 
 How to use ngGridify2
 
@@ -48,24 +49,21 @@ How to use ngGridify2
 
 6.  At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
 
-    ngOnInit () {
-    this.myData = {
-        Title: 'Iains Title',
-        Data: [{
-          Title: 'stuff',
-          Stuff: 123
+  ngOnInit() { 
+    this.myData = { 
+      Title: 'The Grid Title', 
+      ExportEnabled: true,
+      Data: [
+        { Title: 'stuff1', Stuff: 123 },
+        { Title: 'stuff2', Stuff: 456 },
+        { Title: 'stuff3', Stuff: 567 }
+      ], 
+      ItemClick: {
+        Function: function (item) { 
+          console.log('We\'re going to be doing something with this item:', item); 
         },
-        {
-          Title: 'more stuff',
-          Stuff: 456
-        },
-        {
-          Title: 'doopy stuff',
-          Stuff: 789
-        }],
-        ItemClick: function (item) {
-          console.log(item)
-        }
+        Text: 'Click me!'
       }
-    }
+    } 
+  }
 
