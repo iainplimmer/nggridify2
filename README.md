@@ -30,7 +30,7 @@ How to use ngGridify2
     npm install nggridify2 --save-dev
 
 2.  Add the following the the app.module.ts file.
-      import { ngGridifyModule } from './[*Location*]/ng-gridify2/ng-gridify.module';
+      import { ngGridifyModule } from './../../node_modules/nggridify2/ng-gridify.module';
 
 3.  Import it into the application.
 
@@ -41,7 +41,7 @@ How to use ngGridify2
 
 4.  Add the following in the component that uses it for the data type that is required to bind.
 
-    import { ngGridifyData } from './[*Location*]/ng-gridify2/ng-gridify.types';
+    import { ngGridifyData } from './../../node_modules/nggridify2/ng-gridify.types';
 
 5.  Declare the component in the markup and choose what data to pass in.
 
