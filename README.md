@@ -40,7 +40,7 @@ How to use ngGridify2
 
 4.  Add the following in the component that uses it for the data type that is required to bind.
 
-    import { ngGridifyData } from './[*Location*]/ng-gridify2/ng-gridify.types';
+    import { ngGridifyData } from './../../node_modules/nggridify2/ng-gridify.types';
 
 5.  Declare the component in the markup and choose what data to pass in.
 
