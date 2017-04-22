@@ -7,37 +7,37 @@ ngGridify is a quick and easy way to show some data on the page, and be able to 
 1. npm nggridify2
 
 2. Add the following the the app.module.ts file
-import { ngGridifyModule } from './[*Location*]/ng-gridify2/ng-gridify.module';
+    import { ngGridifyModule } from './[*Location*]/ng-gridify2/ng-gridify.module';
 
-imports: [
-    [*Other Imports*]
-    ngGridifyModule
-  ],
+    imports: [
+        [*Other Imports*]
+        ngGridifyModule
+    ],
 
 3. Add the following in the component that uses it for the data type that is required to bind
 
-import { ngGridifyData } from './[*Location*]/ng-gridify2/ng-gridify.types';
+    import { ngGridifyData } from './[*Location*]/ng-gridify2/ng-gridify.types';
 
-<ng-gridify [gridData]="myData"></ng-gridify>
+    <ng-gridify [gridData]="myData"></ng-gridify>
 
-ngOnInit () {
+    ngOnInit () {
     this.myData = {
-      Title: 'Iains Title',
-      Data: [{
-        Title: 'poop',
-        Stuff: 123
-      },
-      {
-        Title: 'loop',
-        Stuff: 456
-      },
-      {
-        Title: 'doop',
-        Stuff: 789
-      }],
-      ItemClick: function (item) {
-        console.log(item)
+        Title: 'Iains Title',
+        Data: [{
+          Title: 'poop',
+          Stuff: 123
+        },
+        {
+          Title: 'loop',
+          Stuff: 456
+        },
+        {
+          Title: 'doop',
+          Stuff: 789
+        }],
+        ItemClick: function (item) {
+          console.log(item)
+        }
       }
     }
-}
 
