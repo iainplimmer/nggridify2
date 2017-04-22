@@ -25,17 +25,17 @@ If you want to contribute, i'm attempting to complete the following features and
 
 #How to use ngGridify2
 
-1.  Install it
+Open your Angular2+ application and install the package from NPM
 
     npm install nggridify2 --save-dev
 
-2.  Add the following the the app.module.ts file.
+Add the following to the app.module.ts file in your application.
 
 ```
 import { ngGridifyModule } from './../../node_modules/nggridify2/ng-gridify.module';
 ```
 
-3.  Import it into the application.
+Import it into the application.
 
 ```
     imports: [
@@ -44,19 +44,19 @@ import { ngGridifyModule } from './../../node_modules/nggridify2/ng-gridify.modu
     ]
 ```   
 
-4.  Add the following in the component that uses it for the data type that is required to bind.
+Add the following in the component that uses it for the data type that is required to bind.
 
 ```
 import { ngGridifyData } from './../../node_modules/nggridify2/ng-gridify.types';
 ```
 
-5.  Declare the component in the markup and choose what data to pass in.
+Declare the component in the markup and choose what data to pass in.
 
 ```
 <ng-gridify [gridData]="myData"></ng-gridify>
 ```
 
-6.  At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
+At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
 
 ```
     ngOnInit() { 
