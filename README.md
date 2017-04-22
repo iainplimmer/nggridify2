@@ -29,7 +29,7 @@ How to use ngGridify2
     npm install nggridify2 --save-dev
 
 2.  Add the following the the app.module.ts file.
-      import { ngGridifyModule } from './[*Location*]/ng-gridify2/ng-gridify.module';
+      import { ngGridifyModule } from './../../node_modules/nggridify2/ng-gridify.module';
 
 3.  Import it into the application.
 
