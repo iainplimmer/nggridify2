@@ -21,7 +21,8 @@ If you want to contribute, i'm attempting to complete the following features and
 3.  Turn on/off a feature to convert the JSON data into a CSV file. 
 4.  Pass in how many items per-page to display. <-- The MVP done until here :)
 5.  Allow the ability to sort the columns by clicking the header.
-
+6.  The ability to add a type to a column aswell as a format, useful for dates.
+7.  The ability to add a series of functions to each row instead of a single one.
 
 #How to use ngGridify2
 
@@ -59,6 +60,11 @@ Declare the component in the markup and choose what data to pass in.
 At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
 
 ```
+
+
+   // Code to be placed in the component that uses the grid.  
+   myData = {};
+
    ngOnInit() { 
     this.myData = {        
       Title: 'The Grid Title', 
