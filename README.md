@@ -14,15 +14,20 @@ These are pretty much features that any basic online report table uses, right? I
 
 #Contributions
 
-If you want to contribute, i'm attempting to complete the following features and all contributions are welcome, this is a learning project and certainly not a vanity one. (in no particular order).
+If you want to contribute, i'm attempting to complete the following features and all contributions are welcome, this is a learning project and certainly not a vanity one. 
 
+#Key Implemented Features
 1.  Pass in a native JSON object and title for the grid.
 2.  Read the JSON object and build a table around it. 
 3.  Turn on/off a feature to convert the JSON data into a CSV file. 
-4.  Pass in how many items per-page to display. <-- The MVP done until here :)
+4.  Pass in how many items per-page to display. 
 5.  Allow the ability to sort the columns by clicking the header.
-6.  The ability to add a type to a column aswell as a format, useful for dates.
-7.  The ability to add a series of functions to each row instead of a single one.
+
+#Upcoming Features (In no particular order)
+1.  The ability to add a type to a column aswell as a format, useful for dates. <-- The MVP done until here :)
+2.  The ability to add a series of functions to each row instead of a single one.
+3.  Seperate the sort and page pipes into their own thing. I don't like how that method isn't totally encapsulated.
+4.  When the component first loads, allow the caller to choose the default sorting.
 
 #How to use ngGridify2
 

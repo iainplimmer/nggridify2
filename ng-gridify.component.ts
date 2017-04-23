@@ -7,12 +7,14 @@ import { ngGridifyData } from './ng-gridify.types';
     <h3>{{ gridData.Title }}</h3>
     <table>
     <tr>
-      <th *ngFor="let col of columnNames;">{{col}}</th>        
+      <th *ngFor="let col of columnNames; let i = index; trackBy: trackByFn">      
+        <a href="#" (click)="SortGrid(i)">{{col}}</a>      
+      </th>        
       <th>
         <button *ngIf="gridData.ExportEnabled" (click)="ExportDataToCSV()">Export</button>
       </th>
     </tr>
-    <tr *ngFor="let row of gridData.Data | PagePipe: itemsPerPage : currentPage">
+    <tr *ngFor="let row of gridData.Data | PagePipe: itemsPerPage : currentPage : sortByColumn : sortByAscending">
       <td *ngFor="let col of columnKeys;">
         {{row[col]}}
       </td>
@@ -31,13 +33,21 @@ import { ngGridifyData } from './ng-gridify.types';
 })
 export class ngGridifyComponent {
 
+  //  The grid data that is passed into the component
   @Input() gridData: ngGridifyData; 
+  
+  //  These two really could do with being in a tuple instead of two arrays but contain references
+  //  to the dynamic columns that have been provided to the component
   columnNames: string[];
   columnKeys: string[];
+
+  //  All other local variables that control sorting and paging.
   itemsPerPage: number = 99999;
   currentPage: number = 1;
   numberOfPages: number = 0;
   pages: number[] = [];
+  sortByColumn: string = null;
+  sortByAscending: boolean = true;
 
   //  When starting up, if a columns property exists on the object, we use that, otherwise
   //  we use the default which is to just bring in the properties of the first Data object
@@ -66,6 +76,12 @@ export class ngGridifyComponent {
       });      
     }
 
+  }
+
+  //  When a column header is clicked, we 
+  SortGrid (index: number) {
+    this.sortByAscending = !this.sortByAscending;
+    this.sortByColumn = this.columnKeys[index];
   }
 
   //  Changes the users current page by passing the current page into the pipe.
