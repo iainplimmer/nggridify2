@@ -68,7 +68,7 @@ At some point declare and pass in the native JSON object inside the type 'ngGrid
 
 
    // Code to be placed in the component that uses the grid.  
-   myData = {};
+   myData: ngGridifyData ;
 
    ngOnInit() { 
     this.myData = {        
