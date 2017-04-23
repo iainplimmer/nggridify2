@@ -59,51 +59,41 @@ Declare the component in the markup and choose what data to pass in.
 At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
 
 ```
-    ngOnInit() { 
-      this.myData = { 
-        Title: 'The Grid Title', 
-        ExportEnabled: true,
-        Columns: [
-          { Name: 'Name', DisplayValue: 'NAME' },
-          { Name: 'Id', DisplayValue: 'ID' }
-        ],
-        Data: [
-          { Name: 'Iain', Id: 1 },
-          { Name: 'William', Id: 2 },
-          { Name: 'Sara', Id: 3 },
-          { Name: 'Erin', Id: 4 },
-          { Name: 'Garry', Id: 5 },
-          { Name: 'Jeremy', Id: 6 },
-          { Name: 'Christine', Id: 7 },
-          { Name: 'Janet', Id: 8 },       
-          { Name: 'Daniel', Id: 9 },       
-          { Name: 'Barry', Id: 10 },       
-          { Name: 'David', Id: 11 },
-          { Name: 'Emma', Id: 12 },
-          { Name: 'Leanne', Id: 13 },
-          { Name: 'Ashley', Id: 14 },
-          { Name: 'Kath', Id: 15 },
-          { Name: 'Gruncle', Id: 16 },
-          { Name: 'Russell', Id: 17 },
-          { Name: 'Chris', Id: 18 },       
-          { Name: 'Jason', Id: 19 },       
-          { Name: 'Charles', Id: 20 },       
-          { Name: 'Ryan', Id: 21 },
-          { Name: 'Robert', Id: 22 },
-          { Name: 'Una', Id: 23 },
-          { Name: 'Edna', Id: 24 },
-          { Name: 'John', Id: 25 },    
-          { Name: 'Sandra', Id: 26 },       
-          { Name: 'Stuart', Id: 27 }       
-        ], 
-        ItemClick: {
-          Function: function (item) { 
-            console.log('We\'re going to be doing something with this item:', item); 
-          },
-          Text: 'Click me!'
+   ngOnInit() { 
+    this.myData = {        
+      Title: 'The Grid Title', 
+      ExportEnabled: true,
+      Columns: [
+        { Name: 'Id', DisplayValue: 'Id' },
+        { Name: 'Name', DisplayValue: 'Name' },        
+        { Name: 'Job', DisplayValue: 'Job' }
+      ],
+      Data: [
+        { Name: 'Frank Reynolds', Id: 1, Job: 'Mastermind' },
+        { Name: 'Deandra Reynolds', Id: 2, Job: 'Bartender' },
+        { Name: 'Ronald MacDonald', Id: 3, Job: 'Nightman' },
+        { Name: 'Dennis Reynolds', Id: 4, Job: 'Dayman (Fighter of the Nightman)' },
+        { Name: 'Charlie Kelly', Id: 5, Job: 'Janitor' },
+        { Name: 'The Waitress', Id: 6, Job: 'Waitress' },
+        { Name: 'Artemis Dubois', Id: 7, Job: 'Actress' },
+        { Name: 'The Attorney', Id: 8, Job: 'Attorney' },       
+        { Name: 'Ben Smith', Id: 9, Job: 'Troop' },       
+        { Name: 'Rickety Cricket', Id: 10, Job: 'Tramp' },       
+        { Name: 'Maureen Ponderosa', Id: 11, Job: 'Cat' },
+        { Name: 'Carmen', Id: 12, Job: 'Was a man' },
+        { Name: 'Uncle Jack Kelly', Id: 13, Job: 'Attorney' },
+        { Name: 'Macs Dad', Id: 14, Job: 'Steals Christmas presents' },
+        { Name: 'Gail the Snail', Id: 15, Job: 'Mashing it' },
+        { Name: 'McPoyle', Id: 16, Job: 'Who knows' }        
+      ], 
+      ItemClick: {
+        Function: function (item) { 
+            alert( item.Name + ', ' + item.Job);
         },
-        ItemsPerPage: 7
-      } 
+        Text: 'Click me to see a summary'
+      },
+      ItemsPerPage: 5
+    } 
   }
   ```
 

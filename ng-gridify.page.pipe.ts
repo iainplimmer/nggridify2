@@ -9,11 +9,11 @@ export class PagePipe implements PipeTransform {
 
   }
 
+  //  We simply take an array coming in of any type and slice this into pages, if there is no data, the first page 
+  //  is called or the data is empty the same value is returned, if 
   transform(dataIn: any[], itemsPerPage:number, currentPage:number): any {
 
-    console.log('this is coming through the pipe!!!', itemsPerPage, currentPage);
-    
-    if (dataIn.length <= itemsPerPage) {
+    if (!dataIn || dataIn.length == 0 || dataIn.length <= itemsPerPage) {
       return dataIn;
     }
     else if (currentPage == 1) {
