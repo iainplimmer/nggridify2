@@ -28,6 +28,10 @@ export class PagePipe implements PipeTransform {
       });
     }
 
+    if (!ascending) {
+      dataIn.reverse();
+    }
+
     if (!dataIn || dataIn.length == 0 || dataIn.length <= itemsPerPage) {
       return dataIn;
     }
