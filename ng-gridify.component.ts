@@ -1,4 +1,4 @@
-import { OnInit, Input, Component } from '@angular/core';
+import { OnInit, Input, Component, OnChanges } from '@angular/core';
 import { ngGridifyData } from './ng-gridify.types';
 
 @Component({
@@ -25,7 +25,7 @@ import { ngGridifyData } from './ng-gridify.types';
     <tr>
       <td [attr.colspan]="columnNames.length+1">
         Go to page: 
-        <button *ngFor="let page of pages;" (click)="ChangePage(page)">{{page}}</button>
+        <button *ngFor="let page of pages; let i=index" (click)="ChangePage(i+1)">{{i+1}}</button>
       </td>
     </tr>
     </table>
@@ -34,7 +34,8 @@ import { ngGridifyData } from './ng-gridify.types';
 export class ngGridifyComponent {
 
   //  The grid data that is passed into the component
-  @Input() gridData: ngGridifyData; 
+  @Input() 
+  gridData: ngGridifyData; 
   
   //  These two really could do with being in a tuple instead of two arrays but contain references
   //  to the dynamic columns that have been provided to the component
@@ -49,33 +50,32 @@ export class ngGridifyComponent {
   sortByColumn: string = null;
   sortByAscending: boolean = true;
 
+  ngOnInit() { 
+    this.SetupGrid();
+  }
+
   //  When starting up, if a columns property exists on the object, we use that, otherwise
   //  we use the default which is to just bring in the properties of the first Data object
   //  in order to build the grid. We also set the items per page here aswell as the number
   //  of pages and create an array of these to bind to on the component.
-  ngOnInit() { 
-    
+  SetupGrid () {
     this.itemsPerPage = this.gridData.ItemsPerPage;        
 
-    if (this.gridData.Data && this.gridData.Data.length > 0) {
-      this.numberOfPages = Math.ceil(this.gridData.Data.length /this.itemsPerPage);            
+    if (this.gridData.Data && this.gridData.Data.length > 0) {      
       this.columnNames = Object.getOwnPropertyNames(this.gridData.Data[0]);
       this.columnKeys = Object.getOwnPropertyNames(this.gridData.Data[0]); 
-      
-      for(let i=0; i < this.numberOfPages; i++) {
-        this.pages.push(i+1);
-      }
+      this.numberOfPages = Math.ceil(this.gridData.Data.length /this.itemsPerPage);            
+      this.pages = Array(this.numberOfPages);
     }
     
     if (this.gridData.Columns) {
-      this.columnNames = this.gridData.Columns.map(function (e, i, a) {        
+      this.columnNames = this.gridData.Columns.map(e => {  
         return e.DisplayValue;
       });
-      this.columnKeys = this.gridData.Columns.map(function (e, i, a) {        
+      this.columnKeys = this.gridData.Columns.map(e => {        
         return e.Name;
       });      
     }
-
   }
 
   //  When a column header is clicked, we 
@@ -90,32 +90,37 @@ export class ngGridifyComponent {
   }
 
   //  Export function will be created here (currently only tested in Google Chrome)
-  //  It feels really ES2015 the way i'm doing this too, i'd also like to rename the
-  //  document that is being returned to the grid name.
+  //  I'd like to rename the document that is being returned to the grid name.
   ExportDataToCSV() {
     
     //  The content type needs to be set to allow it to be opened in numbers/excel/openofice
     let csvContent = "data:text/csv;charset=utf-8,";
-    let cols = this.columnKeys;
+    const cols = this.columnKeys;
 
     //  Setup the headers
-    csvContent += cols.map(function (column) {                            
+    csvContent += cols.map(column => {                            
       return column;
     }).join(",") + '\n';
 
     //  I'm sure there is a more efficient way to do this, but we basically loop over the items, match the requested columns 
     //  push the result into a comma delimited string, with a new line on each row.
-    this.gridData.Data.map(function (item){     
-       csvContent += cols.map(function (column) {                            
+    this.gridData.Data.map(item => {     
+       csvContent += cols.map(column => {                            
          return item[column];
        }).join(",") + '\n';
     })
 
     //  Open the content in a new window
-    let encodedUri = encodeURI(csvContent);
+    const encodedUri = encodeURI(csvContent);
     window.open(encodedUri);
   }
 
+  /* CURRENTLY RUNNING INTO ISSUES WITH THE ON CHANGE OF THE ARRAY THIS NEEDS WORK - IJP
+    ngOnChanges(changes: SimpleChanges) {
+      console.log(changes, '!');
+      this.SetupGrid();
+  }
+  */
 
 
 }
