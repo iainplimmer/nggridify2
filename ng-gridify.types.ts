@@ -1,6 +1,6 @@
 export class ngGridifyData {
     Title: string;
-    Columns: any[]
+    Columns: ngGridifyColumn[]
     Data: any;
     ExportEnabled: boolean;
     ItemClick: {
@@ -8,4 +8,11 @@ export class ngGridifyData {
         Text: string;
     };
     ItemsPerPage: number;
+}
+
+export class ngGridifyColumn {
+    Name: string;
+    DisplayValue?: string;
+    Width?: string;
+    Type?: string;
 }

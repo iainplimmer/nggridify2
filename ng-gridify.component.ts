@@ -5,7 +5,10 @@ import { ngGridifyData } from './ng-gridify.types';
   selector: 'ng-gridify',
   template: `
     <h3>{{ gridData.Title }}</h3>
-    <table>
+    <table border="1">
+    <colgroup>
+      <col *ngFor="let col of gridData.Columns;" width="{{col.Width}}">
+    </colgroup>
     <tr>
       <th *ngFor="let col of columnNames; let i = index; trackBy: trackByFn">      
         <a href="#" (click)="SortGrid(i)">{{col}}</a>      
@@ -23,7 +26,7 @@ import { ngGridifyData } from './ng-gridify.types';
       </td>
     </tr>
     <tr>
-      <td [attr.colspan]="columnNames.length+1">
+      <td [attr.colspan]="gridData.Columns.length+1">
         Go to page: 
         <button *ngFor="let page of pages; let i=index" (click)="ChangePage(i+1)">{{i+1}}</button>
       </td>
@@ -32,6 +35,9 @@ import { ngGridifyData } from './ng-gridify.types';
   `
 })
 export class ngGridifyComponent {
+
+  // Columns: [
+  //   { Name: 'Id', DisplayValue: 'Id', Width: '200' },
 
   //  The grid data that is passed into the component
   @Input() 
@@ -62,8 +68,6 @@ export class ngGridifyComponent {
     this.itemsPerPage = this.gridData.ItemsPerPage;        
 
     if (this.gridData.Data && this.gridData.Data.length > 0) {      
-      this.columnNames = Object.getOwnPropertyNames(this.gridData.Data[0]);
-      this.columnKeys = Object.getOwnPropertyNames(this.gridData.Data[0]); 
       this.numberOfPages = Math.ceil(this.gridData.Data.length /this.itemsPerPage);            
       this.pages = Array(this.numberOfPages);
     }
@@ -113,7 +117,7 @@ export class ngGridifyComponent {
     //  push the result into a comma delimited string, with a new line on each row.
     this.gridData.Data.map(item => {     
        csvContent += cols.map(column => {                            
-         return item[column];
+         return this.DeepValue(item, column)
        }).join(",") + '\n';
     })
 
