@@ -16,7 +16,7 @@ import { ngGridifyData } from './ng-gridify.types';
     </tr>
     <tr *ngFor="let row of gridData.Data | PagePipe: itemsPerPage : currentPage : sortByColumn : sortByAscending">
       <td *ngFor="let col of columnKeys;">
-        {{row[col]}}
+        {{DeepValue(row, col)}}
       </td>
       <td>
         <a href="#" (click)="gridData.ItemClick.Function(row)">{{gridData.ItemClick.Text}}</a>
@@ -87,6 +87,13 @@ export class ngGridifyComponent {
   //  Changes the users current page by passing the current page into the pipe.
   ChangePage (page: number) {
     this.currentPage = page;
+  }
+
+  //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)
+  DeepValue(obj, key) {
+    let c = obj; 
+    key.split('.').forEach((p) => c = c[p]); 
+    return c;
   }
 
   //  Export function will be created here (currently only tested in Google Chrome)
