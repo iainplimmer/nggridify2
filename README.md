@@ -107,6 +107,8 @@ You can also retrieve deep values from objects by using the dot notation. For ex
   ]
 ```
 
+* Known issue : When using deep values, the column sort does not work as intended.
+
 
 #### Contributions
 
@@ -120,10 +122,12 @@ If you want to contribute, i'm attempting to complete the following features and
 5.  Allow the ability to sort the columns by clicking the header.
 
 #### Upcoming Features (In no particular order)
-1.  The ability to add a type to a column aswell as a format, useful for dates. <-- The MVP done until here :)
-2.  The ability to add a series of functions to each row instead of a single one.
-3.  Seperate the sort and page pipes into their own thing. I don't like how that method isn't totally encapsulated.
-4.  When the component first loads, allow the caller to choose the default sorting.
+1.  When using deep values, the column sort does not work as intended.
+2.  The ability to add an optional width to a column. 
+3.  The ability to add an optional type column aswell as a format, useful for dates. 
+4.  Seperate the sort and page pipes into their own pipes. I don't like how that method isn't totally encapsulated.
+5.  When the component first loads, allow the caller to choose the default sorting.
+6.  Styling, should we include this as an option?
 
 #### Credits & Thanks
 
