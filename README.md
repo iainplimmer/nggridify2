@@ -59,9 +59,9 @@ At some point declare and pass in the native JSON object inside the type 'ngGrid
       Title: 'The Grid Title', 
       ExportEnabled: true,
       Columns: [
-        { Name: 'Id', DisplayValue: 'Id' },
-        { Name: 'Name', DisplayValue: 'Name' },        
-        { Name: 'Job', DisplayValue: 'Job' }
+        { Name: 'Id', DisplayValue: 'Id', Width: "200" },
+        { Name: 'Name', DisplayValue: 'Name', Width: "200" },        
+        { Name: 'Job', DisplayValue: 'Job', Width: "200" }
       ],
       Data: [
         { Name: 'Frank Reynolds', Id: 1, Job: 'Mastermind' },
