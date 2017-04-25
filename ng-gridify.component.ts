@@ -5,7 +5,7 @@ import { ngGridifyData } from './ng-gridify.types';
   selector: 'ng-gridify',
   template: `
     <h3>{{ gridData.Title }}</h3>
-    <table border="1">
+    <table>
     <colgroup>
       <col *ngFor="let col of gridData.Columns;" width="{{col.Width}}">
     </colgroup>
