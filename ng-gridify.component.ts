@@ -92,7 +92,7 @@ export class ngGridifyComponent {
   //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)
   DeepValue(obj, key) {
     let c = obj; 
-    key.split('.').forEach((p) => c = c[p]); 
+    key.split('.').forEach((p) => c = (c == undefined)?'':c[p]); 
     return c;
   }
 

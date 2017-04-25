@@ -8,26 +8,12 @@ ngGridify is a quick and easy way to show some data on the page, and be able to 
 
 My original ng-gridify package is currently used by hundreds of developers and gets up to 1000 downloads on NPM each month, and while it works, it was my first attempt at OSS so there's a few things that i'd change for certain. It did everything I needed on a form with little to no configuration, so it made me ask the question - can I repeat this for Angular?
 
+
 The idea is that you just include a simple prop in a component that contains everything that it needs to render a table of data on the page, no messing, and it just displays wih column sorting, export to CSV functionality, paging and the ability to pass in a native JSON object (not a TS type) that describes the data straight from a service to make this a breeze.
 
 These are pretty much features that any basic online report table uses, right? It would be great to have a go-to grid.
 
-#### Contributions
 
-If you want to contribute, i'm attempting to complete the following features and all contributions are welcome, this is a learning project and certainly not a vanity one. 
-
-#### Key Implemented Features
-1.  Pass in a native JSON object and title for the grid.
-2.  Read the JSON object and build a table around it. 
-3.  Turn on/off a feature to convert the JSON data into a CSV file. 
-4.  Pass in how many items per-page to display. 
-5.  Allow the ability to sort the columns by clicking the header.
-
-#### Upcoming Features (In no particular order)
-1.  The ability to add a type to a column aswell as a format, useful for dates. <-- The MVP done until here :)
-2.  The ability to add a series of functions to each row instead of a single one.
-3.  Seperate the sort and page pipes into their own thing. I don't like how that method isn't totally encapsulated.
-4.  When the component first loads, allow the caller to choose the default sorting.
 
 #### How to use ngGridify2
 
@@ -65,8 +51,6 @@ Declare the component in the markup and choose what data to pass in.
 At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
 
 ```javascript
-
-
    // Code to be placed in the component that uses the grid.  
    myData: ngGridifyData ;
 
@@ -108,3 +92,39 @@ At some point declare and pass in the native JSON object inside the type 'ngGrid
   }
   ```
 
+You can also retrieve deep values from objects by using the dot notation. For example
+
+```javascript
+  Columns: [
+    { Name: 'Id', DisplayValue: 'Id' },
+    { Name: 'Name', DisplayValue: 'Name' },        
+    { Name: 'Job', DisplayValue: 'Job' },
+    { Name: 'MoreData.Stuff', DisplayValue: 'More Stuff' }
+  ],
+  Data: [
+    { Name: 'Frank Reynolds', Id: 1, Job: 'Mastermind', MoreData: { Stuff: 'Here is some more stuff' } },
+    ///...etc...
+  ]
+```
+
+
+#### Contributions
+
+If you want to contribute, i'm attempting to complete the following features and all contributions are welcome, this is a learning project and certainly not a vanity one. 
+
+#### Key Implemented Features
+1.  Pass in a native JSON object and title for the grid.
+2.  Read the JSON object and build a table around it. 
+3.  Turn on/off a feature to convert the JSON data into a CSV file. 
+4.  Pass in how many items per-page to display. 
+5.  Allow the ability to sort the columns by clicking the header.
+
+#### Upcoming Features (In no particular order)
+1.  The ability to add a type to a column aswell as a format, useful for dates. <-- The MVP done until here :)
+2.  The ability to add a series of functions to each row instead of a single one.
+3.  Seperate the sort and page pipes into their own thing. I don't like how that method isn't totally encapsulated.
+4.  When the component first loads, allow the caller to choose the default sorting.
+
+#### Credits & Thanks
+
+Thanks to https://github.com/pbrln for implementing retrieval of deep values from objects.
