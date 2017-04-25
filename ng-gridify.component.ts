@@ -68,17 +68,13 @@ export class ngGridifyComponent {
     this.itemsPerPage = this.gridData.ItemsPerPage;        
 
     if (this.gridData.Data && this.gridData.Data.length > 0) {      
-      this.numberOfPages = Math.ceil(this.gridData.Data.length /this.itemsPerPage);            
+      this.numberOfPages = Math.ceil(this.gridData.Data.length / this.itemsPerPage);            
       this.pages = Array(this.numberOfPages);
     }
     
     if (this.gridData.Columns) {
-      this.columnNames = this.gridData.Columns.map(e => {  
-        return e.DisplayValue;
-      });
-      this.columnKeys = this.gridData.Columns.map(e => {        
-        return e.Name;
-      });      
+      this.columnNames = this.gridData.Columns.map(e =>  e.DisplayValue);
+      this.columnKeys = this.gridData.Columns.map(e =>  e.Name);      
     }
   }
 
@@ -94,9 +90,9 @@ export class ngGridifyComponent {
   }
 
   //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)
-  DeepValue(obj, key) {
+  DeepValue(obj: Object, key: string) {
     let c = obj; 
-    key.split('.').forEach((p) => c = (c == undefined)?'':c[p]); 
+    key.split('.').forEach((p) => c = (c == undefined) ? '' : c[p]); 
     return c;
   }
 
@@ -109,16 +105,12 @@ export class ngGridifyComponent {
     const cols = this.columnKeys;
 
     //  Setup the headers
-    csvContent += cols.map(column => {                            
-      return column;
-    }).join(",") + '\n';
+    csvContent += cols.join(",") + '\n';
 
     //  I'm sure there is a more efficient way to do this, but we basically loop over the items, match the requested columns 
     //  push the result into a comma delimited string, with a new line on each row.
     this.gridData.Data.map(item => {     
-       csvContent += cols.map(column => {                            
-         return this.DeepValue(item, column)
-       }).join(",") + '\n';
+       csvContent += cols.map(column => this.DeepValue(item, column)).join(",") + '\n';
     })
 
     //  Open the content in a new window
