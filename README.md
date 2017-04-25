@@ -4,7 +4,7 @@ ngGridify is a quick and easy way to show some data on the page, and be able to 
 
 **PLEASE NOTE THIS IS A WORK IN PROGRESS AND WILL BE VERY BASIC UNTIL ESTIMATED COMPLETION IN MAY 2017**
 
-#Why ngGridify2?
+#### Why ngGridify2?
 
 My original ng-gridify package is currently used by hundreds of developers and gets up to 1000 downloads on NPM each month, and while it works, it was my first attempt at OSS so there's a few things that i'd change for certain. It did everything I needed on a form with little to no configuration, so it made me ask the question - can I repeat this for Angular?
 
@@ -12,24 +12,24 @@ The idea is that you just include a simple prop in a component that contains eve
 
 These are pretty much features that any basic online report table uses, right? It would be great to have a go-to grid.
 
-#Contributions
+#### Contributions
 
 If you want to contribute, i'm attempting to complete the following features and all contributions are welcome, this is a learning project and certainly not a vanity one. 
 
-#Key Implemented Features
+#### Key Implemented Features
 1.  Pass in a native JSON object and title for the grid.
 2.  Read the JSON object and build a table around it. 
 3.  Turn on/off a feature to convert the JSON data into a CSV file. 
 4.  Pass in how many items per-page to display. 
 5.  Allow the ability to sort the columns by clicking the header.
 
-#Upcoming Features (In no particular order)
+#### Upcoming Features (In no particular order)
 1.  The ability to add a type to a column aswell as a format, useful for dates. <-- The MVP done until here :)
 2.  The ability to add a series of functions to each row instead of a single one.
 3.  Seperate the sort and page pipes into their own thing. I don't like how that method isn't totally encapsulated.
 4.  When the component first loads, allow the caller to choose the default sorting.
 
-#How to use ngGridify2
+#### How to use ngGridify2
 
 Open your Angular2+ application and install the package from NPM
 
@@ -37,34 +37,34 @@ Open your Angular2+ application and install the package from NPM
 
 Add the following to the app.module.ts file in your application.
 
-```
+```javascript
 import { ngGridifyModule } from './../../node_modules/nggridify2/ng-gridify.module';
 ```
 
 Import it into the application.
 
-```
+```javascript
     imports: [
-        [*Other Imports*]
+        [/*Other Imports*/]
         ngGridifyModule
     ]
 ```   
 
 Add the following in the component that uses it for the data type that is required to bind.
 
-```
+```javascript
 import { ngGridifyData } from './../../node_modules/nggridify2/ng-gridify.types';
 ```
 
 Declare the component in the markup and choose what data to pass in.
 
-```
+```html
 <ng-gridify [gridData]="myData"></ng-gridify>
 ```
 
 At some point declare and pass in the native JSON object inside the type 'ngGridifyData'.
 
-```
+```javascript
 
 
    // Code to be placed in the component that uses the grid.  
