@@ -1,6 +1,6 @@
 {
   "name": "nggridify2",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "ng-gridify reimagined for Angular2+. Generic grid for angularJS with paging, sorting, the ability to export CSV and configurable content.",
   "main": "index.js",
   "scripts": { },
