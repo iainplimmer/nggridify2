@@ -34,7 +34,7 @@ import { ngGridifyData } from './ng-gridify.types';
     </table>
   `
 })
-export class ngGridifyComponent {
+export class NgGridifyComponent {
 
   // Columns: [
   //   { Name: 'Id', DisplayValue: 'Id', Width: '200' },

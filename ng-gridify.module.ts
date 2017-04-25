@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ngGridifyComponent } from './ng-gridify.component';
+import { NgGridifyComponent } from './ng-gridify.component';
 import { CommonModule } from '@angular/common';
 import { PagePipe } from './ng-gridify.page.pipe'
 
 @NgModule({
-    declarations: [ngGridifyComponent, PagePipe],
-    exports: [ngGridifyComponent],
+    declarations: [NgGridifyComponent, PagePipe],
+    exports: [NgGridifyComponent],
     imports: [CommonModule] // Used for ngFor
 })
-export class ngGridifyModule {}
-
-export { ngGridifyComponent };
+export class NgGridifyModule {}
