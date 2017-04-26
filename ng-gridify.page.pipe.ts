@@ -17,7 +17,7 @@ export class PagePipe implements PipeTransform {
 
 
     if (byProperty != null) {
-      dataIn.sort((a: any, b: any) => {
+      dataIn.sort((a: Object, b: Object) => {
         if (a[byProperty] < b[byProperty]) {
           return -1;
         } else if (a[byProperty] > b[byProperty]) {
@@ -39,7 +39,7 @@ export class PagePipe implements PipeTransform {
       return dataIn.slice(0, itemsPerPage);
     }
     else {      
-      let start = itemsPerPage * (currentPage-1);
+      const start = itemsPerPage * (currentPage-1);
       return dataIn.slice(start, start+itemsPerPage);
     }
   }
