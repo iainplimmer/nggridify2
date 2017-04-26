@@ -1,5 +1,6 @@
 import { OnInit, Input, Component, OnChanges } from '@angular/core';
 import { ngGridifyData } from './ng-gridify.types';
+import { NgGridifyService } from './ng-gridify.service';
 
 @Component({
   selector: 'ng-gridify',
@@ -19,7 +20,7 @@ import { ngGridifyData } from './ng-gridify.types';
     </tr>
     <tr *ngFor="let row of gridData.Data | PagePipe: itemsPerPage : currentPage : sortByColumn : sortByAscending">
       <td *ngFor="let col of columnKeys;">
-        {{DeepValue(row, col)}}
+        {{ngGridifyService.DeepValue(row, col)}}
       </td>
       <td>
         <a href="#" (click)="gridData.ItemClick.Function(row)">{{gridData.ItemClick.Text}}</a>
@@ -56,6 +57,8 @@ export class ngGridifyComponent {
   sortByColumn: string = null;
   sortByAscending: boolean = true;
 
+  constructor(private ngGridifyService: NgGridifyService) { }
+
   ngOnInit() { 
     this.SetupGrid();
   }
@@ -89,13 +92,6 @@ export class ngGridifyComponent {
     this.currentPage = page;
   }
 
-  //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)
-  DeepValue(obj: Object, key: string) {
-    let c = obj; 
-    key.split('.').forEach((p) => c = (c == undefined) ? '' : c[p]); 
-    return c;
-  }
-
   //  Export function will be created here (currently only tested in Google Chrome)
   //  I'd like to rename the document that is being returned to the grid name.
   ExportDataToCSV() {
@@ -110,7 +106,7 @@ export class ngGridifyComponent {
     //  I'm sure there is a more efficient way to do this, but we basically loop over the items, match the requested columns 
     //  push the result into a comma delimited string, with a new line on each row.
     this.gridData.Data.map(item => {     
-       csvContent += cols.map(column => this.DeepValue(item, column)).join(",") + '\n';
+       csvContent += cols.map(column => this.ngGridifyService.DeepValue(item, column)).join(",") + '\n';
     })
 
     //  Open the content in a new window
