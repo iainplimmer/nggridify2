@@ -17,6 +17,7 @@ export class PagePipe implements PipeTransform {
       dataIn.sort((a: Object, b: Object) => {
         const aProp = this.ngGridifyService.DeepValue(a, byProperty);
         const bProp = this.ngGridifyService.DeepValue(b, byProperty);
+        
         if (aProp < bProp) {
           return -1;
         } else if (aProp > bProp) {
