@@ -132,3 +132,4 @@ If you want to contribute, i'm attempting to complete the following features and
 #### Credits & Thanks
 
 Thanks to https://github.com/pbrln for implementing retrieval of deep values from objects.
+Thanks to https://github.com/detectivequack fro the tidy up ;)
