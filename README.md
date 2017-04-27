@@ -24,7 +24,7 @@ Open your Angular2+ application and install the package from NPM
 Add the following to the app.module.ts file in your application.
 
 ```javascript
-import { ngGridifyModule } from './../../node_modules/nggridify2/ng-gridify.module';
+import { NgGridifyModule } from 'ng-gridify';
 ```
 
 Import it into the application.
@@ -32,14 +32,14 @@ Import it into the application.
 ```javascript
     imports: [
         [/*Other Imports*/]
-        ngGridifyModule
+        NgGridifyModule
     ]
 ```   
 
 Add the following in the component that uses it for the data type that is required to bind.
 
 ```javascript
-import { ngGridifyData } from './../../node_modules/nggridify2/ng-gridify.types';
+import { ngGridifyData } from 'ng-gridify';
 ```
 
 Declare the component in the markup and choose what data to pass in.
