@@ -119,7 +119,7 @@ Finally, it is also possible to wire up an existing webservice or API that retur
     this.myData = {        
       Title: 'Getting data from a service.', 
       ItemsPerPage: 10,      
-      SortBy: 'Name',
+      SortBy: 'id',
       SortByAscending: true,
       ExportEnabled: false,
       Columns: [
