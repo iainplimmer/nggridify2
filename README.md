@@ -109,10 +109,30 @@ You can also retrieve deep values from objects by using the dot notation. For ex
   ]
 ```
 
-Finally, it is also possible to wire up an existing webservice or API that returns JSON data to the grid by passing a dataUrl. For example
+Finally, it is also possible to wire up an existing webservice or API that returns JSON data to the grid by passing a dataUrl, For example try getting some data from this public API
 
 ```javascript
+  // Code to be placed in the component that uses the grid.  
+  myData: ngGridifyData ;
 
+  ngOnInit() { 
+    this.myData = {        
+      Title: 'Getting data from a service.', 
+      ItemsPerPage: 10,      
+      SortBy: 'Name',
+      SortByAscending: true,
+      ExportEnabled: false,
+      Columns: [
+        { Name: 'id', DisplayValue: 'Id', Width: "200" },
+        { Name: 'title', DisplayValue: 'Name', Width: "200" }
+      ],
+      DataUrl: 'https://jsonplaceholder.typicode.com/posts',      
+      ItemClick: {
+        Function: null,
+        Text: null
+      }            
+    } 
+  }
 ```
 
 
@@ -130,7 +150,7 @@ If you want to contribute, i'm attempting to complete the following features and
 
 #### Upcoming Features (In no particular order)
 1.  The ability to add an optional type column aswell as a format, useful for dates. 
-
+2.  Some sort of loading confirmation, and/or no results message.
 
 #### Credits & Thanks
 
