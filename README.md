@@ -125,7 +125,7 @@ If you want to contribute, i'm attempting to complete the following features and
 
 #### Upcoming Features (In no particular order)
 1.  The ability to add an optional type column aswell as a format, useful for dates. 
-
+2.  The ability to pass a service URL into the component instead of the data suggested by https://github.com/bal3000
 
 #### Credits & Thanks
 
