@@ -1,7 +1,25 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class NgGridifyService {
+
+  constructor (private http: Http) {}
+
+  //  Retrieve data from an externally provided service
+  GetDataFromService(url: string): Promise<Response> {
+    return this.http.get(url)
+      .toPromise()            
+      .then(function (response) { 
+          return response.json(); 
+      })
+      .catch(function (error) {
+          return Promise.reject(error.message || error);
+      }); 
+  }
 
   //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)
   DeepValue(obj: Object, key: string) {

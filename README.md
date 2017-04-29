@@ -109,7 +109,11 @@ You can also retrieve deep values from objects by using the dot notation. For ex
   ]
 ```
 
-* Known issue : When using deep values, the column sort does not work as intended.
+Finally, it is also possible to wire up an existing webservice or API that returns JSON data to the grid by passing a dataUrl. For example
+
+```javascript
+
+```
 
 
 #### Contributions
@@ -122,10 +126,11 @@ If you want to contribute, i'm attempting to complete the following features and
 3.  Turn on/off a feature to convert the JSON data into a CSV file. 
 4.  Pass in how many items per-page to display. 
 5.  Allow the ability to sort the columns by clicking the header and apply a default sort when the component loads.
+6.  The ability to pass a service URL into the component instead of the data suggested by https://github.com/bal3000
 
 #### Upcoming Features (In no particular order)
 1.  The ability to add an optional type column aswell as a format, useful for dates. 
-2.  The ability to pass a service URL into the component instead of the data suggested by https://github.com/bal3000
+
 
 #### Credits & Thanks
 

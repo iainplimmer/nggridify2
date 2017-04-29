@@ -1,7 +1,8 @@
 export class ngGridifyData {
     Title: string;
     Columns: ngGridifyColumn[]
-    Data: any;
+    Data?: any;
+    DataUrl?: string;
     SortBy?: string;
     SortByAscending?: boolean;
     ExportEnabled: boolean;

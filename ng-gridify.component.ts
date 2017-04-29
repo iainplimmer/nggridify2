@@ -59,27 +59,33 @@ export class ngGridifyComponent {
 
   constructor(private ngGridifyService: NgGridifyService) { }
 
-  ngOnInit() { 
-    this.SetupGrid();
-  }
-
   //  When starting up, if a columns property exists on the object, we use that, otherwise
   //  we use the default which is to just bring in the properties of the first Data object
   //  in order to build the grid. We also set the items per page here aswell as the number
   //  of pages and create an array of these to bind to on the component.
+  ngOnInit() { 
+    if (this.gridData.DataUrl && this.gridData.DataUrl.length > 1) { 
+      // DataUrl used
+      this.gridData.Data = [];
+      this.ngGridifyService.GetDataFromService(this.gridData.DataUrl)
+        .then(response => {
+          this.gridData.Data = response;
+          this.SetupGrid();
+        });        
+    }
+    else if (this.gridData.Data && this.gridData.Data.length > 0) { 
+      // Data directly injected  
+      this.SetupGrid();
+    }    
+  }
+
+  //  When we have our data, we can then
   SetupGrid () {
     this.itemsPerPage = this.gridData.ItemsPerPage;       
-
-    if (this.gridData.Data && this.gridData.Data.length > 0) {      
-      this.numberOfPages = Math.ceil(this.gridData.Data.length / this.itemsPerPage);            
-      this.pages = Array(this.numberOfPages);
-    }
-    
-    if (this.gridData.Columns) {
-      this.columnNames = this.gridData.Columns.map(e =>  e.DisplayValue);
-      this.columnKeys = this.gridData.Columns.map(e =>  e.Name);      
-    }
-    
+    this.numberOfPages = Math.ceil(this.gridData.Data.length / this.itemsPerPage);            
+    this.pages = Array(this.numberOfPages);
+    this.columnNames = this.gridData.Columns.map(e =>  e.DisplayValue);
+    this.columnKeys = this.gridData.Columns.map(e =>  e.Name);              
     this.sortByColumn = (this.gridData.SortBy) ? this.gridData.SortBy : (this.columnKeys[0]) ? this.columnKeys[0] : '';    
     this.sortByAscending = (this.gridData.SortByAscending != null) ? this.gridData.SortByAscending : true;
   }
