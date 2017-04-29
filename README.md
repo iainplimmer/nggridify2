@@ -121,13 +121,11 @@ If you want to contribute, i'm attempting to complete the following features and
 2.  Read the JSON object and build a table around it. 
 3.  Turn on/off a feature to convert the JSON data into a CSV file. 
 4.  Pass in how many items per-page to display. 
-5.  Allow the ability to sort the columns by clicking the header.
+5.  Allow the ability to sort the columns by clicking the header and apply a default sort when the component loads.
 
 #### Upcoming Features (In no particular order)
 1.  The ability to add an optional type column aswell as a format, useful for dates. 
-2.  Seperate the sort and page pipes into their own pipes. I don't like how that method isn't totally encapsulated.
-3.  When the component first loads, allow the caller to choose the default sorting.
-4.  Styling, should we include this as an option?
+
 
 #### Credits & Thanks
 
