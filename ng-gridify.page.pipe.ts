@@ -13,24 +13,8 @@ export class PagePipe implements PipeTransform {
   //  The pipe also sorts the data that is displayed on the page, for some reason a seperate sort pipe wasn't working,
   //  which would have been my ideal, but I can approach that in a later version.
   transform(dataIn: any[], itemsPerPage:number, currentPage:number, byProperty:string, ascending:boolean): any {
-    if (byProperty != null) {
-      dataIn.sort((a: Object, b: Object) => {
-        const aProp = this.ngGridifyService.DeepValue(a, byProperty);
-        const bProp = this.ngGridifyService.DeepValue(b, byProperty);
-        
-        if (aProp < bProp) {
-          return -1;
-        } else if (aProp > bProp) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-    }
-
-    if (!ascending) {
-      dataIn.reverse();
-    }
+    
+    dataIn = this.ngGridifyService.Sort(dataIn, byProperty, ascending);
 
     if (!dataIn || dataIn.length == 0 || dataIn.length <= itemsPerPage) {
       return dataIn;

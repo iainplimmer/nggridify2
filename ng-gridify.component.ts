@@ -55,7 +55,7 @@ export class ngGridifyComponent {
   numberOfPages: number = 0;
   pages: number[] = [];
   sortByColumn: string = null;
-  sortByAscending: boolean = true;
+  sortByAscending: boolean;
 
   constructor(private ngGridifyService: NgGridifyService) { }
 
@@ -68,7 +68,7 @@ export class ngGridifyComponent {
   //  in order to build the grid. We also set the items per page here aswell as the number
   //  of pages and create an array of these to bind to on the component.
   SetupGrid () {
-    this.itemsPerPage = this.gridData.ItemsPerPage;        
+    this.itemsPerPage = this.gridData.ItemsPerPage;       
 
     if (this.gridData.Data && this.gridData.Data.length > 0) {      
       this.numberOfPages = Math.ceil(this.gridData.Data.length / this.itemsPerPage);            
@@ -79,6 +79,9 @@ export class ngGridifyComponent {
       this.columnNames = this.gridData.Columns.map(e =>  e.DisplayValue);
       this.columnKeys = this.gridData.Columns.map(e =>  e.Name);      
     }
+    
+    this.sortByColumn = (this.gridData.SortBy) ? this.gridData.SortBy : (this.columnKeys[0]) ? this.columnKeys[0] : '';    
+    this.sortByAscending = (this.gridData.SortByAscending != null) ? this.gridData.SortByAscending : true;
   }
 
   //  When a column header is clicked, we 

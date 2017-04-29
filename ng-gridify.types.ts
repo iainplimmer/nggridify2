@@ -2,6 +2,8 @@ export class ngGridifyData {
     Title: string;
     Columns: ngGridifyColumn[]
     Data: any;
+    SortBy?: string;
+    SortByAscending?: boolean;
     ExportEnabled: boolean;
     ItemClick: {
         Function : any;

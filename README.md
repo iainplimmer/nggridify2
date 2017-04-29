@@ -57,6 +57,9 @@ At some point declare and pass in the native JSON object inside the type 'ngGrid
    ngOnInit() { 
     this.myData = {        
       Title: 'The Grid Title', 
+      ItemsPerPage: 5,      
+      SortBy: 'Name',
+      SortByAscending: true,
       ExportEnabled: true,
       Columns: [
         { Name: 'Id', DisplayValue: 'Id', Width: "200" },
@@ -86,8 +89,7 @@ At some point declare and pass in the native JSON object inside the type 'ngGrid
             alert( item.Name + ', ' + item.Job);
         },
         Text: 'Click me to see a summary'
-      },
-      ItemsPerPage: 5
+      }            
     } 
   }
   ```
