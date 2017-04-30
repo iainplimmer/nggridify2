@@ -13,12 +13,8 @@ export class NgGridifyService {
   GetDataFromService(url: string): Promise<Response> {
     return this.http.get(url)
       .toPromise()            
-      .then(function (response) { 
-          return response.json(); 
-      })
-      .catch(function (error) {
-          return Promise.reject(error.message || error);
-      }); 
+      .then(response => response.json())
+      .catch(error => Promise.reject(error.message || error)); 
   }
 
   //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)
