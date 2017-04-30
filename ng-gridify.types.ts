@@ -5,12 +5,13 @@ export class ngGridifyData {
     DataUrl?: string;
     SortBy?: string;
     SortByAscending?: boolean;
+    ErrorMessage?: string;
     ExportEnabled: boolean;
     ItemClick: {
         Function : any;
         Text: string;
     };
-    ItemsPerPage: number;
+    ItemsPerPage: number;    
 }
 
 export class ngGridifyColumn {

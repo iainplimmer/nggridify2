@@ -6,7 +6,8 @@ import { NgGridifyService } from './services/ng-gridify.service';
   selector: 'ng-gridify',
   template: `
     <h3>{{ gridData.Title }}</h3>
-    <table>
+    <p *ngIf="showError">{{ errorMessage }}</p>
+    <table *ngIf="!showError">
     <colgroup>
       <col *ngFor="let col of gridData.Columns;" width="{{col.Width}}">
     </colgroup>
@@ -41,9 +42,6 @@ import { NgGridifyService } from './services/ng-gridify.service';
 })
 export class ngGridifyComponent {
 
-  // Columns: [
-  //   { Name: 'Id', DisplayValue: 'Id', Width: '200' },
-
   //  The grid data that is passed into the component
   @Input() 
   gridData: ngGridifyData; 
@@ -60,6 +58,10 @@ export class ngGridifyComponent {
   pages: number[] = [];
   sortByColumn: string = null;
   sortByAscending: boolean;
+  errorMessage: string = 'Sorry! An error has occurred, and the data could not be rendered.';
+
+  //  Flag used to display the grid or error message
+  showError: boolean = false;
 
   constructor(private ngGridifyService: NgGridifyService) { }
 
@@ -68,11 +70,16 @@ export class ngGridifyComponent {
     if (this.gridData.DataUrl && this.gridData.DataUrl.length > 1) { 
       // DataUrl used
       this.gridData.Data = [];
+      
       this.ngGridifyService.GetDataFromService(this.gridData.DataUrl)
-        .subscribe(response => {
-          this.gridData.Data = response;
-          this.SetupGrid();
-        });        
+          .subscribe(response => {
+            this.gridData.Data = response;
+            this.SetupGrid();
+          }, error => {
+            this.errorMessage = (this.gridData.ErrorMessage != null) ? this.gridData.ErrorMessage : this.errorMessage
+            this.showError = true;
+          })    
+             
     }
     else if (this.gridData.Data && this.gridData.Data.length > 0) { 
       // Data directly injected  
@@ -82,7 +89,7 @@ export class ngGridifyComponent {
 
   //  When we have our data, we can set the items per page here aswell as the number
   //  of pages and create an array of these to bind to on the component.
-  SetupGrid () {
+  SetupGrid () {    
     this.itemsPerPage = this.gridData.ItemsPerPage;       
     this.numberOfPages = Math.ceil(this.gridData.Data.length / this.itemsPerPage);            
     this.pages = Array(this.numberOfPages);

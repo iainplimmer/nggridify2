@@ -3,16 +3,21 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class NgGridifyService {
 
   constructor (private http: Http) {}
 
-  //  Retrieve data from an externally provided service
-  GetDataFromService(url: string): Observable<Response> {
+  //  Retrieve data from an externally provided service, throw an error if an exception occurs
+  GetDataFromService(url: string): Observable<Response> {    
     return this.http.get(url)
       .map(response => response.json())
+      .catch(error => {
+        return Observable.throw(error)
+      });      
   }
 
   //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)

@@ -57,10 +57,11 @@ At some point declare and pass in the native JSON object inside the type 'ngGrid
    ngOnInit() { 
     this.myData = {        
       Title: 'The Grid Title', 
+      ErrorMessage: 'There has been an error!',
       ItemsPerPage: 5,      
       SortBy: 'Name',
       SortByAscending: true,
-      ExportEnabled: true,
+      ExportEnabled: true,      
       Columns: [
         { Name: 'Id', DisplayValue: 'Id', Width: "200" },
         { Name: 'Name', DisplayValue: 'Name', Width: "200" },        
@@ -118,8 +119,9 @@ Finally, it is also possible to wire up an existing webservice or API that retur
   ngOnInit() { 
     this.myData = {        
       Title: 'Getting data from a service.', 
+      ErrorMessage: 'There has been an error!',
       ItemsPerPage: 10,      
-      SortBy: 'id',
+      SortBy: 'id',      
       SortByAscending: true,
       ExportEnabled: false,
       Columns: [
