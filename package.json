@@ -1,67 +1,9 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "nggridify2@^0.5.1",
-        "scope": null,
-        "escapedName": "nggridify2",
-        "name": "nggridify2",
-        "rawSpec": "^0.5.1",
-        "spec": ">=0.5.1 <0.6.0",
-        "type": "range"
-      },
-      "/Users/iainplimmer/git/usethegrid"
-    ]
-  ],
-  "_from": "nggridify2@>=0.5.1 <0.6.0",
-  "_id": "nggridify2@0.5.1",
-  "_inCache": true,
-  "_location": "/nggridify2",
-  "_nodeVersion": "6.9.5",
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/nggridify2-0.5.1.tgz_1493499326313_0.007314496906474233"
-  },
-  "_npmUser": {
-    "name": "iainplimmer",
-    "email": "iainplimmer@gmail.com"
-  },
-  "_npmVersion": "3.10.10",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "nggridify2@^0.5.1",
-    "scope": null,
-    "escapedName": "nggridify2",
-    "name": "nggridify2",
-    "rawSpec": "^0.5.1",
-    "spec": ">=0.5.1 <0.6.0",
-    "type": "range"
-  },
-  "_requiredBy": [
-    "#DEV:/",
-    "#USER"
-  ],
-  "_resolved": "https://registry.npmjs.org/nggridify2/-/nggridify2-0.5.1.tgz",
-  "_shasum": "c7572d0b7b81af3034728a687288d5c68b1e7f71",
-  "_shrinkwrap": null,
-  "_spec": "nggridify2@^0.5.1",
-  "_where": "/Users/iainplimmer/git/usethegrid",
-  "author": {
-    "name": "Iain Plimmer"
-  },
-  "bugs": {
-    "url": "https://github.com/iainplimmer/ngGridify2/issues"
-  },
-  "dependencies": {},
+  "name": "nggridify2",
+  "version": "0.5.2",
   "description": "ng-gridify reimagined for Angular2+. Generic grid for angularJS with paging, sorting, the ability to export CSV and configurable content.",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "c7572d0b7b81af3034728a687288d5c68b1e7f71",
-    "tarball": "https://registry.npmjs.org/nggridify2/-/nggridify2-0.5.1.tgz"
-  },
-  "gitHead": "badc73a3bfdf157b16792d3597485992824430ee",
-  "homepage": "https://github.com/iainplimmer/ngGridify2#readme",
+  "main": "index.js",
+  "scripts": { },
   "keywords": [
     "angular",
     "angular2",
@@ -78,21 +20,10 @@
     "display data",
     "ng-gridify"
   ],
+  "author": "Iain Plimmer",
   "license": "ISC",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "name": "iainplimmer",
-      "email": "iainplimmer@gmail.com"
-    }
-  ],
-  "name": "nggridify2",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iainplimmer/ngGridify2.git"
-  },
-  "scripts": {},
-  "version": "0.5.1"
+    "url": "git+https://github.com/iainplimmer/ngGridify2"
+  }
 }
