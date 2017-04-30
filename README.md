@@ -2,16 +2,14 @@
 
 ngGridify is a quick and easy way to show some data on the page, and be able to sort it, configure the columns and bind some sort of javascript function to a button on each line if you want to.
 
-**PLEASE NOTE THIS IS A WORK IN PROGRESS AND WILL BE VERY BASIC UNTIL ESTIMATED COMPLETION IN MAY 2017**
-
 #### Why ngGridify2?
 
 My original ng-gridify package is currently used by hundreds of developers and gets up to 1000 downloads on NPM each month, and while it works, it was my first attempt at OSS so there's a few things that i'd change for certain. It did everything I needed on a form with little to no configuration, so it made me ask the question - can I repeat this for Angular?
 
 
-The idea is that you just include a simple prop in a component that contains everything that it needs to render a table of data on the page, no messing, and it just displays wih column sorting, export to CSV functionality, paging and the ability to pass in a native JSON object (not a TS type) that describes the data straight from a service to make this a breeze.
+The idea is that you just include a simple prop in a component that contains everything that it needs to render a table of data on the page, no messing, and it just displays wih column sorting, export to CSV functionality, paging and the ability to pass in a native JSON object (or a API service URL, not a TS type) that describes the data straight from a service to make this a breeze.
 
-These are pretty much features that any basic online report table uses, right? It would be great to have a go-to grid.
+These are pretty much features that any basic online report table uses, right? It would be great to have a free go-to grid, that just did this for us that took advantage of global styles.
 
 
 
@@ -149,10 +147,11 @@ If you want to contribute, i'm attempting to complete the following features and
 4.  Pass in how many items per-page to display. 
 5.  Allow the ability to sort the columns by clicking the header and apply a default sort when the component loads.
 6.  The ability to pass a service URL into the component instead of the data suggested by https://github.com/bal3000
+7.  Observable error support added for the API service.
 
 #### Upcoming Features (In no particular order)
 1.  The ability to add an optional type column aswell as a format, useful for dates. 
-2.  Some sort of loading confirmation, and/or no results message.
+
 
 #### Credits & Thanks
 
