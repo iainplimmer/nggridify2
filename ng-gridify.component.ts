@@ -63,10 +63,7 @@ export class ngGridifyComponent {
 
   constructor(private ngGridifyService: NgGridifyService) { }
 
-  //  When starting up, if a columns property exists on the object, we use that, otherwise
-  //  we use the default which is to just bring in the properties of the first Data object
-  //  in order to build the grid. We also set the items per page here aswell as the number
-  //  of pages and create an array of these to bind to on the component.
+  //  When starting up, we first look to see if we are getting data from a service or a JSON array
   ngOnInit() { 
     if (this.gridData.DataUrl && this.gridData.DataUrl.length > 1) { 
       // DataUrl used
@@ -83,7 +80,8 @@ export class ngGridifyComponent {
     }    
   }
 
-  //  When we have our data, we can then
+  //  When we have our data, we can set the items per page here aswell as the number
+  //  of pages and create an array of these to bind to on the component.
   SetupGrid () {
     this.itemsPerPage = this.gridData.ItemsPerPage;       
     this.numberOfPages = Math.ceil(this.gridData.Data.length / this.itemsPerPage);            
@@ -94,19 +92,19 @@ export class ngGridifyComponent {
     this.sortByAscending = (this.gridData.SortByAscending != null) ? this.gridData.SortByAscending : true;
   }
 
-  //  When a column header is clicked, we 
+  //  When a column header is clicked, we can sort the grid, this is done by the sort pipe.
   SortGrid (index: number) {
     this.sortByAscending = !this.sortByAscending;
     this.sortByColumn = this.columnKeys[index];
   }
 
-  //  Changes the users current page by passing the current page into the pipe.
+  //  Changes the users current page by passing the current page into the pagin pipe.
   ChangePage (page: number) {
     this.currentPage = page;
   }
 
   //  Export function will be created here (currently only tested in Google Chrome)
-  //  I'd like to rename the document that is being returned to the grid name.
+  //  NOTE TO SELF : I'd like to rename the document that is being returned to the grid name.
   ExportDataToCSV() {
     
     //  The content type needs to be set to allow it to be opened in numbers/excel/openofice
