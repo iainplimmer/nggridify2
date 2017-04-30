@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class NgGridifyService {
@@ -10,11 +10,9 @@ export class NgGridifyService {
   constructor (private http: Http) {}
 
   //  Retrieve data from an externally provided service
-  GetDataFromService(url: string): Promise<Response> {
+  GetDataFromService(url: string): Observable<Response> {
     return this.http.get(url)
-      .toPromise()            
-      .then(response => response.json())
-      .catch(error => Promise.reject(error.message || error)); 
+      .map(response => response.json())
   }
 
   //  Gets a deep-value from an object, by a specified dot separated key (ie. user.firstname)

@@ -69,7 +69,7 @@ export class ngGridifyComponent {
       // DataUrl used
       this.gridData.Data = [];
       this.ngGridifyService.GetDataFromService(this.gridData.DataUrl)
-        .then(response => {
+        .subscribe(response => {
           this.gridData.Data = response;
           this.SetupGrid();
         });        
