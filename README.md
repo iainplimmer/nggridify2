@@ -109,7 +109,7 @@ You can also retrieve deep values from objects by using the dot notation. For ex
   ]
 ```
 
-Finally, it is also possible to wire up an existing webservice or API that returns JSON data to the grid by passing a dataUrl, For example try getting some data from this public API
+Finally, it is also possible to wire up an existing webservice or API that returns JSON data to the grid by passing a data url, For example try getting some data from this public API
 
 ```javascript
   // Code to be placed in the component that uses the grid.  
@@ -119,7 +119,7 @@ Finally, it is also possible to wire up an existing webservice or API that retur
     this.myData = {        
       Title: 'Getting data from a service.', 
       ItemsPerPage: 10,      
-      SortBy: 'Name',
+      SortBy: 'id',
       SortByAscending: true,
       ExportEnabled: false,
       Columns: [
