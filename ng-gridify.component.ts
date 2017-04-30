@@ -1,6 +1,6 @@
 import { OnInit, Input, Component, OnChanges } from '@angular/core';
 import { ngGridifyData } from './ng-gridify.types';
-import { NgGridifyService } from './ng-gridify.service';
+import { NgGridifyService } from './services/ng-gridify.service';
 
 @Component({
   selector: 'ng-gridify',
@@ -18,7 +18,11 @@ import { NgGridifyService } from './ng-gridify.service';
         <button *ngIf="gridData.ExportEnabled" (click)="ExportDataToCSV()">Export</button>
       </th>
     </tr>
-    <tr *ngFor="let row of gridData.Data | PagePipe: itemsPerPage : currentPage : sortByColumn : sortByAscending">
+    <tr 
+      *ngFor="let row of gridData.Data       
+        | SortPipe: sortByColumn : sortByAscending
+        | PagePipe: itemsPerPage : currentPage
+    ">
       <td *ngFor="let col of columnKeys;">
         {{ngGridifyService.DeepValue(row, col)}}
       </td>
